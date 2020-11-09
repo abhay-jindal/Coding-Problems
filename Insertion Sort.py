@@ -18,14 +18,14 @@ only few elements are misplaced in complete big array.
 """
 
 
-def insertionSort(array):
+def insertionSort(array, n):
     for i in range(n-1):
         j = i+1
 
         # Move elements of arr[1..n], that are 
         # greater than next element, to one position ahead 
         # of their current position 
-        while j >=0 and i>=0 and array[j] < array[i]:
+        while j >= 0 and i >= 0 and array[j] < array[i]:
             array[i], array[j] = array[j], array[i]
             j -= 1
             i -= 1
