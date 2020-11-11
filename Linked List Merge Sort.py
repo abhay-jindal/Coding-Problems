@@ -90,9 +90,16 @@ class LinkedList:
     def printMiddle(self, head):  
         slow = head 
         fast = head 
+        flag = False
         while (fast != None and fast.next != None): 
             slow = slow.next
-            fast = fast.next.next     
+            fast = fast.next.next 
+            if fast is None:
+                flag = True
+        if flag:
+            print("LinkedList have even number of nodes.")
+        else:
+            print("LinkedList have odd number of nodes.")
         return slow
    
     # recursively reverse the given list by changing the links of given list.
@@ -113,6 +120,14 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
 
+    # deletes a particular node while head of the LinkedList is unknown. Exception for the last node!
+    def deleteNode(self, node):
+        if node.next is None:
+            node = None
+            return
+        node.data = node.next.data
+        temp = node.next.next
+        node.next = temp
 
 # class to create a new node of an linkedlist
 class Node:
@@ -129,10 +144,12 @@ if __name__ == "__main__":
         llist.append(data)
         nodes -= 1
     llist.printList(llist.head)
-
-    data = int(input("Enter data for new Node: "))
-    llist.insertNode(data)
+    llist.deleteNode(llist.head.next.next.next.next)
     llist.printList(llist.head)
+
+    # data = int(input("Enter data for new Node: "))
+    # llist.insertNode(data)
+    # llist.printList(llist.head)
     # llist.reverseList(llist.head)
 
     # nodes = int(input("Enter number of nodes for second linkedlist: "))

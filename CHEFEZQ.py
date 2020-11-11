@@ -22,7 +22,6 @@ def Queries(listQueries, maxQuery):
          carry -= maxQuery
    print("Chef won't be free any day") 
    
-T = int(input('Number of test cases to be checked: '))
 k = int(input('Maximum number of queries to solve per day: '))
 n = int(input('Number of days queries has to be solved: '))
 listQueries = list(map(int,input("\nEnter the queries to be resolved per day: ").strip().split()))[:n] 

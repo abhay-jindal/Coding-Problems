@@ -67,21 +67,6 @@ if __name__ == "__main__":
     n = int(input("Enter the root value: "))
     root = newNode(n)
 
-    while True:
-        temp = root
-        action = input('Enter the child (left/right)? ')
-        try:
-           if action == 'left':
-              n = int(input("Enter the left child value: "))
-              root.left = newNode(n)
-              temp = root.left
-           if action == 'right':
-              n = int(input("Enter the left child value: "))
-              root.left = newNode(n)
-              temp = root.left
-
-
-
     root.left = newNode(3)
     root.left.left = newNode(4)
     root.left.right = newNode(5)

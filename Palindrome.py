@@ -1,6 +1,6 @@
 """
 Program to check if given number is palindrome or not. This can also be used to 
-reverse the given number
+reverse the given number.
 """
 
 def reverseDigit(num):

@@ -10,13 +10,13 @@ The idea of binary search is to use the information that the array is sorted and
 
 def binarySearch(array, start, end, searchElement):
    if start <= end:
-      mid = start+(end-1)//2
+      mid = start+(end-start)//2
       if array[mid] == searchElement:
          return mid
       elif searchElement > array[mid]:
-         return binarySearch(array, start, mid-1, searchElement)
-      else:
          return binarySearch(array, mid+1, n, searchElement)
+      else:
+         return binarySearch(array, start, mid-1, searchElement)
    else:
       return -1
 
