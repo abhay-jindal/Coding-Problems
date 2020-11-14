@@ -16,30 +16,29 @@ class newNode():
 
 
 # Insert new node in a binary tree
-def insert(temp, key):
-    if not temp:
-        root = newNode(key)
-        return
+def insert(node, key):
+    if not node:
+       root = newNode(key)
+       return
 
-    q = []
-    q.append(temp)
-    while len(q):
-        obj = q.pop(0)
-        if not obj.left:
-            obj.left = newNode(key)
+    treeNodes = [node]
+    while treeNodes:
+        temp = treeNodes.pop(0)
+        if not temp.left:
+            temp.left = newNode(key)
             break
         else:
-            q.append(obj.left)
-        if not obj.right:
-            obj.right = newNode(key)
+            treeNodes.append(temp.left)
+        if not temp.right:
+            temp.right = newNode(key)
             break
         else:
-            q.append(obj.right)
+            treeNodes.append(temp.right)
 
 
 # Depth First Traversal: Inorder (Left, Root, Right)
 def inOrder(temp):
-    if (not temp):
+    if not temp:
         return
     inOrder(temp.left)
     print(temp.data, end= " ")
@@ -66,14 +65,12 @@ if __name__ == "__main__":
 
     n = int(input("Enter the root value: "))
     root = newNode(n)
+    nodes = int(input("Enter the number of nodes: "))
+    while nodes > 0:
+        value = int(input("Enter the node value: "))
+        insert(root, value)
+        nodes -= 1
 
-    root.left = newNode(3)
-    root.left.left = newNode(4)
-    root.left.right = newNode(5)
-    root.right = newNode(6)
-    root.right.right = newNode(7)
-    insert(root, 8)
-    insert(root, 9)
     inOrder(root)
     print("\n")
     preOrder(root)

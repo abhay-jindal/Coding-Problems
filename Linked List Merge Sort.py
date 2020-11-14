@@ -86,7 +86,7 @@ class LinkedList:
             curr_node = curr_node.next
         print(" ")
 
-    # get middle of an linkedlist, middle in case of odd else second element in middle.
+    # get middle of an linkedlist, middle in case of odd nodes else second element in middle.
     def printMiddle(self, head):  
         slow = head 
         fast = head 
@@ -102,17 +102,16 @@ class LinkedList:
             print("LinkedList have odd number of nodes.")
         return slow
    
-    # recursively reverse the given list by changing the links of given list.
-    def reverseList(self, node):
-        if node == None:
-            return node
-        if node.next == None:
-            return node
-
-        node1 = self.reverseList(node.next)
-        node.next.next = node
-        node.next = None
-        return node1
+    # iteratively reverse the given list by changing the links of given list.
+    def reverseList(self, head):
+        curr = head
+        prev = None
+        while curr is not None:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self.head = prev
 
     # insert new node at the beginning of given linked list
     def insertNode(self, data):
@@ -143,14 +142,10 @@ if __name__ == "__main__":
         data = int(input("Enter data for node: "))
         llist.append(data)
         nodes -= 1
-    llist.printList(llist.head)
-    llist.deleteNode(llist.head.next.next.next.next)
-    llist.printList(llist.head)
 
     # data = int(input("Enter data for new Node: "))
     # llist.insertNode(data)
-    # llist.printList(llist.head)
-    # llist.reverseList(llist.head)
+    llist.printList(llist.head)
 
     # nodes = int(input("Enter number of nodes for second linkedlist: "))
     # llist1 = LinkedList()
