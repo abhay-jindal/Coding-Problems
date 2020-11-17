@@ -134,6 +134,26 @@ class Node:
         self.data = data
         self.next = None
 
+def mergeLists(node, node1):
+    fake = Node(-1)
+    last = fake
+  
+    while node is not None and node1 is not None:
+        if node.data <= node1.data:
+            last.next = node
+            last = node
+            node = node.next
+        else:
+            last.next = node1
+            last = node1
+            node1 = node1.next
+    if node is None:
+        last.next = node1
+    if node1 is None:
+        last.next = node
+    return fake.next
+
+
 
 if __name__ == "__main__":
     nodes = int(input("Enter number of nodes for linkedlist: "))
@@ -145,14 +165,19 @@ if __name__ == "__main__":
 
     # data = int(input("Enter data for new Node: "))
     # llist.insertNode(data)
-    llist.printList(llist.head)
 
-    # nodes = int(input("Enter number of nodes for second linkedlist: "))
-    # llist1 = LinkedList()
-    # while nodes > 0:
-        # data = int(input("Enter data for node: "))
-        # llist1.append(data)
-        # nodes -= 1
+    nodes = int(input("Enter number of nodes for second linkedlist: "))
+    llist1 = LinkedList()
+    while nodes > 0:
+        data = int(input("Enter data for node: "))
+        llist1.append(data)
+        nodes -= 1
+
+    head = mergeLists(llist.head, llist1.head)
+    while head:
+        print(head.data, end= " ")
+        head = head.next
+
 
     # newList = LinkedList()
     # newList.addLists(llist.head, llist1.head)
