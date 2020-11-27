@@ -64,6 +64,56 @@ def insertElement(node, value):
             node.right = insertElement(node.right, value)
     return node
 
+# delete node in an binary search tree
+def deleteNode(node, value):
+    if node is None:
+        return None
+    if node.data > value:
+        node.left = deleteNode(node.left, value)
+    elif node.data < value:
+        node.right = deleteNode(node.right, value)
+    else:
+        if node.left is None:
+            temp = node.right
+            node = None
+            return temp
+        elif node.right is None:
+            temp = node.left
+            node = None
+            return temp
+
+        temp = smallestSuccessor(node.right)
+        node.data = temp.data
+        node.right = deleteNode(node.right, temp.data)
+    return node
+
+def smallestSuccessor(node):
+    while node.left:
+        node = node.left
+    return node
+
+def heightTree(node):
+    if node is None:
+        return 0
+    else:
+        lHeight = heightTree(node.left)
+        rHeight = heightTree(node.right)
+        if lHeight > rHeight:
+            return lHeight + 1
+        else:
+            return rHeight + 1
+
+def diameterTree(node):
+    if node is None:
+        return 0
+    else:
+        lHeight = diameterTree(node.left)
+        rHeight = diameterTree(node.right)
+        if lHeight == rHeight:
+            return 1
+        else:
+            return lHeight + rHeight + 1
+
 
 if __name__ == "__main__":
     n = int(input("Enter the root value: "))
@@ -74,6 +124,11 @@ if __name__ == "__main__":
         root = insertElement(root, value)
         nodes -= 1
 
-    inOrder(root)
+    print(diameterTree(root))
+
+    # inOrder(root)
+    # root = deleteNode(root, 10)
+    # inOrder(root)
+
 
 

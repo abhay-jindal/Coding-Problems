@@ -24,13 +24,11 @@ class LinkedList:
         if head == None or head.next == None:
             return head
 
-        middle = self.printMiddle(head)
+        middle = self.getMiddleNode(head)
         nextToMiddle = middle.next
-
         middle.next = None
         left = self.mergeSort(head)
         right = self.mergeSort(nextToMiddle)
-
         sortedList = self.sortedMerge(left, right)
         return sortedList
 
@@ -76,18 +74,8 @@ class LinkedList:
         if carry > 0:
             temp.next = Node(carry)
 
-    # print linkedlist data
-    def printList(self, head):
-        if head is None:
-            print(" ")
-        curr_node = head
-        while curr_node:
-            print(curr_node.data, end=" ")
-            curr_node = curr_node.next
-        print(" ")
-
-    # get middle of an linkedlist, middle in case of odd nodes else second element in middle.
-    def printMiddle(self, head):  
+    # get middle of an linkedlist, middle node in case of odd nodes else second element in middle.
+    def getMiddleNode(self, head):  
         slow = head 
         fast = head 
         flag = False
@@ -103,7 +91,7 @@ class LinkedList:
         return slow
    
     # iteratively reverse the given list by changing the links of given list.
-    def reverseList(self, head):
+    def reverseList(self, head, allotHead = False):
         curr = head
         prev = None
         while curr is not None:
@@ -111,7 +99,10 @@ class LinkedList:
             curr.next = prev
             prev = curr
             curr = next
-        self.head = prev
+        if allotHead:
+            self.head = prev
+        else:
+            return prev
 
     # insert new node at the beginning of given linked list
     def insertNode(self, data):
@@ -128,12 +119,14 @@ class LinkedList:
         temp = node.next.next
         node.next = temp
 
+
 # class to create a new node of an linkedlist
 class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
 
+# function to merge two sorted lists in place using constant space.
 def mergeLists(node, node1):
     fake = Node(-1)
     last = fake
@@ -153,6 +146,60 @@ def mergeLists(node, node1):
         last.next = node
     return fake.next
 
+# print linkedlist data with the given node.
+def printList(head):
+    if head is None:
+        print(" ")
+    curr_node = head
+    while curr_node:
+        print(curr_node.data, end=" ")
+        curr_node = curr_node.next
+    print(" ")
+
+
+# reorder linkedlist in a1, an-1, a2, an-2.... format using O(1) auxillary space.
+def reorderList(node):
+    if node is None or node.next is None:
+        return node
+
+    middle = llist.getMiddleNode(node)
+    curr = middle.next
+    middle.next = None
+    prev = llist.reverseList(curr)
+    fake = Node(-1)
+    last = fake
+    flag = True
+    while node is not None and prev is not None:
+        if flag:
+            last.next = node
+            last = node
+            node = node.next
+            flag = False
+        else:
+            last.next = prev
+            last = prev
+            prev = prev.next
+            flag = True
+    if node is None:
+        last.next = prev
+    if prev is None:
+        last.next = node
+    return fake.next
+
+def oddEvenList(node):
+    if node is None and node.next is None:
+        return node
+    slow = node
+    fast = node.next
+    last = node.next
+    while fast is not None and fast.next is not None:
+        slow.next = fast.next
+        fast.next = fast.next.next
+        slow = slow.next
+        fast = fast.next
+    slow.next = last
+    return node
+
 
 
 if __name__ == "__main__":
@@ -162,21 +209,28 @@ if __name__ == "__main__":
         data = int(input("Enter data for node: "))
         llist.append(data)
         nodes -= 1
+    
+    head = oddEvenList(llist.head)
+    while head:
+        print(head.data, end= " ")
+        head = head.next
+
+
 
     # data = int(input("Enter data for new Node: "))
     # llist.insertNode(data)
 
-    nodes = int(input("Enter number of nodes for second linkedlist: "))
-    llist1 = LinkedList()
-    while nodes > 0:
-        data = int(input("Enter data for node: "))
-        llist1.append(data)
-        nodes -= 1
+    # nodes = int(input("Enter number of nodes for second linkedlist: "))
+    # llist1 = LinkedList()
+    # while nodes > 0:
+        # data = int(input("Enter data for node: "))
+        # llist1.append(data)
+        # nodes -= 1
 
-    head = mergeLists(llist.head, llist1.head)
-    while head:
-        print(head.data, end= " ")
-        head = head.next
+    # head = mergeLists(llist.head, llist1.head)
+    # while head:
+        # print(head.data, end= " ")
+        # head = head.next
 
 
     # newList = LinkedList()

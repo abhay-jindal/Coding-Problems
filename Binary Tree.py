@@ -35,6 +35,17 @@ def insert(node, key):
         else:
             treeNodes.append(temp.right)
 
+def heightTree(node):
+    if node is None:
+        return 1
+    else:
+        lHeight = heightTree(node.left)
+        rHeight = heightTree(node.right)
+        if lHeight > rHeight:
+            return lHeight + 1
+        else:
+            return rHeight + 1
+
 
 # Depth First Traversal: Inorder (Left, Root, Right)
 def inOrder(temp):
