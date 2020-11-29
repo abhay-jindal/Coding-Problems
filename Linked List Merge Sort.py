@@ -186,6 +186,7 @@ def reorderList(node):
         last.next = node
     return fake.next
 
+# function to reorder linked list in odd even position manner.
 def oddEvenList(node):
     if node is None and node.next is None:
         return node

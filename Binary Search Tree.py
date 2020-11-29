@@ -16,7 +16,7 @@ class newNode():
 
 # Depth First Traversal: Inorder (Left, Root, Right)
 def inOrder(temp):
-    if (not temp):
+    if temp is None:
         return
     inOrder(temp.left)
     print(temp.data, end= " ")
@@ -64,7 +64,7 @@ def insertElement(node, value):
             node.right = insertElement(node.right, value)
     return node
 
-# delete node in an binary search tree
+# delete node with given value in an binary search tree.
 def deleteNode(node, value):
     if node is None:
         return None
@@ -87,11 +87,13 @@ def deleteNode(node, value):
         node.right = deleteNode(node.right, temp.data)
     return node
 
+# helper function to find smallest left node of given node.
 def smallestSuccessor(node):
     while node.left:
         node = node.left
     return node
 
+# function to find the height of an given tree using recursion.
 def heightTree(node):
     if node is None:
         return 0
@@ -103,16 +105,21 @@ def heightTree(node):
         else:
             return rHeight + 1
 
-def diameterTree(node):
+# print level order of an given binary tree.
+def printLevelOrderBfs(node):
+    height = heightTree(node)
+    for i in range(height+1):
+        printGivenLevel(node, i)
+
+# helper function to actually print the given level node values.
+def printGivenLevel(node, level):
     if node is None:
-        return 0
+        return None
+    elif level == 0:
+        print(node.data, end=" ")
     else:
-        lHeight = diameterTree(node.left)
-        rHeight = diameterTree(node.right)
-        if lHeight == rHeight:
-            return 1
-        else:
-            return lHeight + rHeight + 1
+        printGivenLevel(node.left, level-1)
+        printGivenLevel(node.right, level-1)
 
 
 if __name__ == "__main__":
@@ -124,11 +131,12 @@ if __name__ == "__main__":
         root = insertElement(root, value)
         nodes -= 1
 
-    print(diameterTree(root))
+    inOrder(root)
+    # deleteValue = int(input("Enter the node value to delete: "))
+    # root = deleteNode(root, deleteValue)
+    print('\n')
+    printLevelOrderBfs(root)
 
-    # inOrder(root)
-    # root = deleteNode(root, 10)
-    # inOrder(root)
 
 
 
