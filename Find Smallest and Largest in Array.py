@@ -7,7 +7,7 @@ def findDuplicate(array):
             return array[i]
     return -1
 
-# finds largest and smallest element in unsortes array in O(log n) time complexity.
+# finds largest and smallest element in unsorted array in O(log n) time complexity.
 def findSmallLarge(array):
     small, large, start, end = float("inf"), 0, 0 , len(array)-1
     while start < end:

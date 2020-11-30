@@ -201,6 +201,31 @@ def oddEvenList(node):
     slow.next = last
     return node
 
+def rotateRight(node, k):
+    if node is None or node.next is None:
+        return node
+    curr = node
+    llistLen = 0
+    while curr.next is not None:
+        curr = curr.next
+        llistLen += 1
+
+    k = k%llistLen
+    if k == 0:
+        return node
+
+    slow = node
+    fast = node
+    for _ in range(k):
+        fast = fast.next
+    while fast.next is not None:
+        slow = slow.next
+        fast = fast.next
+
+    new = slow.next
+    slow.next = None
+    fast.next = node
+    return new
 
 
 if __name__ == "__main__":
@@ -210,8 +235,11 @@ if __name__ == "__main__":
         data = int(input("Enter data for node: "))
         llist.append(data)
         nodes -= 1
+
+    rotations = int(input("Enter number of rotations: "))
+    head = rotateRight(llist.head, rotations)
     
-    head = oddEvenList(llist.head)
+    # head = oddEvenList(llist.head)
     while head:
         print(head.data, end= " ")
         head = head.next
