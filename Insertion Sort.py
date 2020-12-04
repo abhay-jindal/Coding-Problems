@@ -2,7 +2,7 @@
 """
 INSERTION SORT
 
-The insertion sort algorithm picks values from the unsorted part are picked and placed at the correct position in the sorted part.
+The insertion sort algorithm picks values from the unsorted part and places them at correct position in the sorted part.
 
 Time Complexity: O(n*2)
 Auxiliary Space: O(1)
@@ -19,16 +19,15 @@ only few elements are misplaced in complete big array.
 
 
 def insertionSort(array, n):
-    for i in range(n-1):
-        j = i+1
+    for i in range(1, n):
+        j = i-1
 
         # Move elements of arr[1..n], that are 
         # greater than next element, to one position ahead 
         # of their current position 
-        while j >= 0 and i >= 0 and array[j] < array[i]:
-            array[i], array[j] = array[j], array[i]
+        while j >= 0 and array[j] > array[j+1]:
+            array[j], array[j+1] = array[j+1], array[j]
             j -= 1
-            i -= 1
     return array
 
 
