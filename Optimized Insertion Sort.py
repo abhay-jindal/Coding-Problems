@@ -6,6 +6,12 @@ The insertion sort algorithm picks values from the unsorted part are picked and 
 Algorithms assign values instead of swapping them which makes it faster.
 Reference - https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/SortOpt.html#code-tuning-for-simple-sorting-algorithms
 
+Srting algorithm is run on a random integer array with 10,000 items. Times are in milliseconds. 
+
+Sort      |  Standard |  Shifting  |
+          |           |            |
+Insertion |  11,220   |   5,100    |
+
 Time Complexity: O(n*2)
 Auxiliary Space: O(1)
 

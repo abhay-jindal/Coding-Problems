@@ -34,9 +34,8 @@ def pancakeSort(array, n):
     curr_size = n
     while curr_size > 1:
         max = maxElement(array, curr_size)
-        if max != curr_size:
-            flip(array, max)
-            flip(array, curr_size-1)
+        flip(array, max)
+        flip(array, curr_size-1)
         curr_size -= 1
     return array
 

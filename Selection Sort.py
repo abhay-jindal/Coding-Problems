@@ -8,19 +8,17 @@ This is an in-place sorting algorithm.
 1) The subarray which is already sorted.
 2) Remaining subarray which is unsorted.
 
-In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray.
-
 Auxiliary Space: O(1)
-Time Complexity: O(n2) as there are two nested loops.
+Time Complexity: O(n*n) as there are two nested loops.
 The good thing about selection sort is it never makes more than O(n) swaps and can be useful when memory write is a costly operation.
 """
 
-def selectionSort(array):
-   for i in range(len(array)):
+def selectionSort(array, n):
+   for i in range(n):
       minIndex = i
 
       # Find the minimum element in remaining unsorted array 
-      for j in range(i+1, len(array)):
+      for j in range(i+1, n):
          if array[minIndex] > array[j]:
             minIndex = j
 
@@ -31,4 +29,4 @@ def selectionSort(array):
 n = int(input('Number of elements to be sorted: '))
 array = list(map(int,input("\nEnter the elements: ").strip().split()))[:n] 
 print("Array before sorting: {}".format(array))
-print("Array after sorting: {}".format(selectionSort(array)))
+print("Array after sorting: {}".format(selectionSort(array, n)))
