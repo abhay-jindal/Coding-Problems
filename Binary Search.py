@@ -21,13 +21,35 @@ def binarySearch(array, start, end, searchElement):
    return -1
 
 
+def search(nums, target):
+    left = 0
+    right = len(nums)-1
+    while left<=right:
+        mid = (left+right)//2
+
+        if nums[mid] == target:
+            return True
+        elif nums[left] <= nums[right]:
+            if target > nums[mid] or target < nums[left]:
+                left = mid + 1
+            else:
+                right = mid - 1
+        else:
+            # if target < nums[mid] or target > nums[r]:
+            if target < nums[mid] or target > nums[right]:
+                right = mid - 1
+            else:
+                left = mid + 1
+    return False
+
 if __name__ == "__main__":
     n = int(input('Number of elements: '))
     array = list(map(int,input("\nEnter the elements: ").strip().split()))[:n] 
     searchElement = int(input('Element to search: '))
-    element = binarySearch(array, 0, n-1, searchElement)
+    # element = binarySearch(array, 0, n-1, searchElement)
+    print(search(array, searchElement))
 
-    if element > 0:
-       print("Element found at {} index".format(element))
-    else:
-       print("Element cannot be found in array.")
+    # if element > 0:
+       # print("Element found at {} index".format(element))
+    # else:
+       # print("Element cannot be found in array.")

@@ -21,7 +21,7 @@ class LinkedList:
     
     # sorting of linked list using merge sort in O(nlogn) time complexity
     def mergeSort(self, head):
-        if head == None or head.next == None:
+        if head is None or head.next is None:
             return head
 
         middle = self.getMiddleNode(head)
@@ -78,16 +78,16 @@ class LinkedList:
     def getMiddleNode(self, head):  
         slow = head 
         fast = head 
-        flag = False
-        while (fast != None and fast.next != None): 
+        # flag = False
+        while fast is not None and fast.next is not None: 
             slow = slow.next
             fast = fast.next.next 
-            if fast is None:
-                flag = True
-        if flag:
-            print("LinkedList have even number of nodes.")
-        else:
-            print("LinkedList have odd number of nodes.")
+            # if fast is None:
+                # flag = True
+        # if flag:
+            # print("LinkedList have even number of nodes.")
+        # else:
+            # print("LinkedList have odd number of nodes.")
         return slow
    
     # iteratively reverse the given list by changing the links of given list.
@@ -193,7 +193,7 @@ def oddEvenList(node):
     slow = node
     fast = node.next
     last = node.next
-    while fast is not None and fast.next is not None:
+    while fast and fast.next:
         slow.next = fast.next
         fast.next = fast.next.next
         slow = slow.next
@@ -236,10 +236,10 @@ if __name__ == "__main__":
         llist.append(data)
         nodes -= 1
 
-    rotations = int(input("Enter number of rotations: "))
-    head = rotateRight(llist.head, rotations)
+    # rotations = int(input("Enter number of rotations: "))
+    # head = rotateRight(llist.head, rotations)
     
-    # head = oddEvenList(llist.head)
+    head = llist.mergeSort(llist.head)
     while head:
         print(head.data, end= " ")
         head = head.next
