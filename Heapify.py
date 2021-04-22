@@ -16,7 +16,7 @@ def maxHeapify(array, index, n):
 
     if root != index:
         array[root], array[index] = array[index], array[root]
-        maxHeapify(array, root)
+        maxHeapify(array, root, n)
 
 
 if __name__ == "__main__":

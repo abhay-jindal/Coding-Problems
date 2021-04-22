@@ -1,6 +1,8 @@
 
 """
-INSERTION SORT
+INSERTION SORT ALGORITHM
+
+For Reference : https://en.wikipedia.org/wiki/Insertion_sort
 
 The insertion sort algorithm picks values from the unsorted part and places them at correct position in the sorted part.
 

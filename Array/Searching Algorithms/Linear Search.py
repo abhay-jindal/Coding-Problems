@@ -1,5 +1,7 @@
 """
-LINEAR SEARCH
+LINEAR SEARCH ALGORITHM
+
+https://www.geeksforgeeks.org/linear-search/
 
 The linear search algorithm transverses an array and return the index when element is found.
 Linear search is rarely used practically because other search algorithms such as the binary search 

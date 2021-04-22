@@ -1,5 +1,7 @@
 """
-IS PERFECT SQUARE 
+VALID PERFECT SQUARE 
+
+https://leetcode.com/problems/valid-perfect-square/
 
 Search a sorted array of interval 0 to given num by repeatedly dividing the search interval in half.  
 Begin with an interval covering the whole array. If the value of the search key is less than the item in the middle of the interval, 
@@ -15,9 +17,9 @@ def isPerfectSquare(num):
       if mid**2 == num:
          return mid
       elif mid**2 > num:
-         right -= 1
+         right = mid-1
       else:
-         left += 1
+         left = mid+1
    return -1
 
 num = int(input('Element to search perfect square of: '))

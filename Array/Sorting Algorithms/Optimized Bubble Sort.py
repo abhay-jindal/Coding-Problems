@@ -1,5 +1,7 @@
 """
-BUBBLE SORT
+BUBBLE SORT ALGORITHM
+
+For reference: https://en.wikipedia.org/wiki/Bubble_sort
 
 The bubble sort algorithm sorts an array by repeatedly swapping the adjacent element if they are in wrong order
 and pushing the largest element at the end of array on every iteration.
@@ -9,6 +11,7 @@ Auxiliary Space: O(1)
 Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
 Boundary Cases: Bubble sort takes minimum time (Order of n) when elements are already sorted.
 Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
+
 """
 
 def bubbleSort(array):

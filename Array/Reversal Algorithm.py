@@ -1,6 +1,8 @@
 """
 REVERSAL ALGORITHM FOR ARRAY ROTATION
 
+https://leetcode.com/problems/rotate-array/
+
 Let AB are the two parts of the input array where A = arr[0..d-1] and B = arr[d..n-1]. The idea of the algorithm is : 
  
 Reverse A to get ArB, where Ar is reverse of A.

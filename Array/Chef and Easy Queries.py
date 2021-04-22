@@ -11,7 +11,7 @@ Fortunately, after n days, the queries have stopped.
 Chef would like to know the first day during which he has some free time, i.e. the first day when he answered less than k questions.
 """
 
-def Queries(listQueries, maxQuery):
+def chefAndEasyQueries(listQueries, maxQuery):
    carry = 0
    for index, value in enumerate(listQueries):
       carry += value
@@ -25,4 +25,4 @@ def Queries(listQueries, maxQuery):
 k = int(input('Maximum number of queries to solve per day: '))
 n = int(input('Number of days queries has to be solved: '))
 listQueries = list(map(int,input("\nEnter the queries to be resolved per day: ").strip().split()))[:n] 
-Queries(listQueries, k)
+chefAndEasyQueries(listQueries, k)

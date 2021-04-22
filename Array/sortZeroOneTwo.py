@@ -1,6 +1,8 @@
 """
 DUTCH NATIONAL FLAG ALGORITHM OR 3-WAY PARTITIONING
 
+https://leetcode.com/problems/sort-colors/
+
 There are three indices – low, mid and high. Initially, the value of low = mid = 1 and high = N.
 
 Time Complexity: O(n).

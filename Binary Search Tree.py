@@ -108,6 +108,7 @@ def heightTree(node):
 # print level order of an given binary tree.
 def printLevelOrderBfs(node):
     height = heightTree(node)
+    print(height)
     for i in range(height+1):
         printGivenLevel(node, i)
 
@@ -124,6 +125,7 @@ def printGivenLevel(node, level):
 
 if __name__ == "__main__":
     n = int(input("Enter the root value: "))
+
     root = newNode(n)
     nodes = int(input("Enter the number of nodes: "))
     while nodes > 0:

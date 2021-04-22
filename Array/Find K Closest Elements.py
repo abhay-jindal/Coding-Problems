@@ -1,4 +1,17 @@
 """
+
+Find K Closest Elements
+
+https://leetcode.com/problems/find-k-closest-elements/
+
+Given a sorted integer array arr, two integers k and x, return the k closest 
+integers to x in the array. The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+
+    |a - x| < |b - x|, or
+    |a - x| == |b - x| and a < b
+
 Time complexity is O(nk) as we have to iterate over elements once and for finding max 
 time complexity is length of dict i.e. k
 """
