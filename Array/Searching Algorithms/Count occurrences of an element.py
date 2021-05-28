@@ -1,15 +1,17 @@
 """
 Find First and Last Position of Element in Sorted Array
 
-https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+https://www.geeksforgeeks.org/count-number-of-occurrences-or-frequency-in-a-sorted-array/
+
+https://leetcode.com/discuss/interview-question/124724/
 
 Given an array of int sorted in ascending order, find the starting and ending position of a given target value.
-If target is not found in the array, return [-1, -1].
+If target is not found in the array, return 0.
 
 Follow up: Could you write an algorithm with O(log n) runtime complexity?
 """
 
-def searchRange(nums, target):
+def countFrequency(nums, target):
     def search(mode):
         resp, left, right = None, 0, len(nums)-1
         while left <= right:
@@ -34,15 +36,20 @@ def searchRange(nums, target):
         return -1 if resp is None else resp
 
     # iteratively binary search two times to find the range first by left part and then second part.
-    return [search(True),search(False)]
+    first = search(True)
+    if first == -1:
+        return 0
+    else:
+        last = search(False)
+        return last + first - 1
 
 
 n = int(input('Number of elements: '))
 array = list(map(int,input("\nEnter the elements: ").strip().split()))[:n] 
 target = int(input('Target Value to search for: '))
 
-range = searchRange(array, target)
-print("Value {} ranges between index {}.".format(target, range))
+frequency = countFrequency(array, target)
+print("Value {} occurs {} number of times.".format(target, frequency))
 
 
 

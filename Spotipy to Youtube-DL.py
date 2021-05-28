@@ -25,11 +25,14 @@ class Spotify2Ytube:
     def get_ydl_opts(path):
         return {
             "format": "bestaudio/best",
-            "outtmpl": f"./{path}/%(title)s.mp3",
+            "outtmpl": f"./{path}/%(title)s.flac",
+            'addmetadata':True,
+            'postprocessor_args': ['-metadata artist=Flags'],
             "postprocessors": [
                 {
-                    "key": "FFmpegExtractAudio",
-                    "preferredquality": "320",
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'flac',
+                    'preferredquality': '320',
                 },
             ],
         }

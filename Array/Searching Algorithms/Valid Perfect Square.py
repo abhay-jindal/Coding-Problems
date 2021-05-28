@@ -11,7 +11,7 @@ The idea of binary search is to use the information that the array is sorted and
 """
 
 def isPerfectSquare(num):
-   left, right = 0, num
+   left, right = 1, num
    while left <= right:
       mid = left+(right-left)//2
       if mid**2 == num:
