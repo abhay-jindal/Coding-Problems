@@ -25,7 +25,7 @@ from main import LinkedList
     Space Complexity: O(1)
 """
 def reverse_list(head):
-    if head.next is None:
+    if head is None or head.next is None:
         return head
 
     prev = None
