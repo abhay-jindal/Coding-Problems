@@ -39,4 +39,4 @@ if __name__ == "__main__":
     print(list)  # to print linkedlist representation in 1 -> 2 -> 3 -> None
 
     mid_node = get_middle_node(list.head)
-    print(f"Middle node for given linkedlist: {mid_node.data}")
+    print(f"Middle node for given linkedlist: {mid_node}")
