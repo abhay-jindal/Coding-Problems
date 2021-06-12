@@ -60,9 +60,9 @@ class LinkedList:
 
 class Node:
     # constructor for creating an list node with data as node's data & next pointer which points to next node in list.
-    def __init__(self, data):
+    def __init__(self, data, next=None):
         self.data = data
-        self.next = None
+        self.next = next
 
     # you can also add a __repr__ to classes to have a more helpful representation of the objects.
     def __repr__(self):
